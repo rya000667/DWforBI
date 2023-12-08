@@ -1,0 +1,9 @@
+CREATE TABLE ResourceTbl
+(
+    ResNo CHAR(4) NOT NULL,
+    ResName VARCHAR(20) NOT NULL,
+    Rate DECIMAL(10,2) NOT NULL,
+
+CONSTRAINT PK_ResNo PRIMARY KEY (ResNo),
+CONSTRAINT Check_Rate CHECK(Rate>0)
+);
