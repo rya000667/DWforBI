@@ -22,23 +22,14 @@ CustZip CHAR(10),
 CustBal DECIMAL(12,2)
 CONSTRAINT PKCustomer PRIMARY KEY (CustNo) );
 
--- Create Order Table
-CREATE TABLE OrderTbl(
-    OrdNo CHAR(8),
-    OrdDate DATE CONSTRAINT OrdDateRequired NOT NULL,
-    CustNo CHAR(8) CONSTRAINT CustNoRequired NOT NULL,
-    EmpNo CHAR(8),
-CONSTRAINT PKOrderTbl PRIMARY KEY(OrdNo),
-CONSTRAINT FKCustNo FOREIGN KEY (CustNo) REFERENCES Customer,
-CONSTRAINT FKEmpNo FOREIGN KEY (EmpNo) REFERENCES Employee
-);
+-- Create Facility Table
 
 -- Create EventPlanRequest Table
 CREATE TABLE EventRequest
 (
     EventNo CHAR(4) NOT NULL,
-    DateHeld DATE,
-    DateReq DATE NOT NULL,
+    DateHeld DATE CONSTRAINT dateNotNull NOT NULL,
+    DateReq DATE DEFAULT CURRENT_DATE,
     FacNo CHAR(4) NOT NULL,
     CustNo CHAR(4) NOT NULL,
     DateAuth DATE,
