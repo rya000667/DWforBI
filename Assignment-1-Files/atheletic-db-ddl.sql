@@ -97,16 +97,16 @@ CREATE TABLE eventRequest
     facno VARCHAR(8) CONSTRAINT facnoNotNull NOT NULL,
     custno VARCHAR(8) CONSTRAINT custNoNotNull NOT NULL,
     dateauth DATE,
-    status VARCHAR(10) DEFAULT 'PENDING' NOT NULL,
+    status VARCHAR(10) DEFAULT 'Pending' NOT NULL,
     estcost DECIMAL(10,2) CONSTRAINT estCostNotNull NOT NULL,
     estaudience INTEGER CONSTRAINT estAudienceNotNull NOT NULL,
-    budno CHAR(5) NOT NULL,
+    budno VARCHAR(8),
 
 
 CONSTRAINT PKeventno PRIMARY KEY (eventno),
 FOREIGN KEY (custno) REFERENCES customer,
 FOREIGN KEY (facno) REFERENCES facility,
-CONSTRAINT Check_Status CHECK(status IN('PENDING', 'DENIED', 'APPROVED'))
+CONSTRAINT Check_Status CHECK(status IN('Pending', 'Denied', 'Approved'))
 );
 
 DROP TABLE IF EXISTS eventplan;
@@ -115,7 +115,7 @@ CREATE TABLE eventplan
     planno VARCHAR(8),
     eventno VARCHAR(8) CONSTRAINT eventnoNotNull NOT NULL,
     workdate DATE CONSTRAINT workdateNotNull NOT NULL,
-    notes VARCHAR(50) CONSTRAINT notesNotNull NOT NULL,
+    notes VARCHAR(50),
     activity VARCHAR(50) CONSTRAINT activityNotNull NOT NULL,
     empno VARCHAR(4),
 
